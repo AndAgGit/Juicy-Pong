@@ -146,7 +146,6 @@ public class EventManager : MonoBehaviour
 
                 entireMiddlePaddle.SetActive(true);
                 break;
-                break;
 
         }
 
