@@ -8,6 +8,7 @@ public class BallBouncing : MonoBehaviour
     public int maxVolleys;
     public static int volleys, bounces;
     public Transform cam, bgBlue, bgRed, bgGreen, bgBlack;
+    public AudioSource bounceSound, volleySound;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,9 @@ public class BallBouncing : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        volleySound.pitch = 1f + ((volleys - 1) * 0.05f);
+        bounceSound.pitch = 1f + ((volleys - 1) * 0.05f);
+
         Vector3 collisionNormal = collision.GetContact(0).normal;
         //Debug.Log(collisionNormal);
 
@@ -58,7 +62,9 @@ public class BallBouncing : MonoBehaviour
         bounces++;
 
         if (collision.gameObject.CompareTag("Player")){
-            if(volleys < maxVolleys)
+            volleySound.Play();
+
+            if (volleys < maxVolleys)
             {
                 volleys++;
             }
@@ -85,7 +91,7 @@ public class BallBouncing : MonoBehaviour
             {
                 rotation = Quaternion.Euler(0f, 60f * checkZPos, 0f);
             }
-            
+
             Vector3 bounceDirection = rotation * collisionNormal;
 
             //Debug.Log($"bounceDirection: {bounceDirection}");
@@ -95,6 +101,10 @@ public class BallBouncing : MonoBehaviour
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.velocity = Vector3.zero;
             rb.AddForce(bounceDirection * newSpeed, ForceMode.VelocityChange);
+        }
+        else
+        {
+            bounceSound.Play();
         }
     }
 }

@@ -640,6 +640,7 @@ GameObject:
   - component: {fileID: 416110680}
   - component: {fileID: 416110682}
   - component: {fileID: 416110681}
+  - component: {fileID: 416110683}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Player
@@ -712,6 +713,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416110679}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &416110683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416110679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9590a4b77f9514db1eb36d46a5246d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topSphere: {fileID: 860519613}
+  botSphere: {fileID: 1383486005}
+  paddle: {fileID: 396303412}
+  boxCollider: {fileID: 396303411}
+  size: 2
 --- !u!1 &540815883
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,6 +746,8 @@ GameObject:
   - component: {fileID: 540815885}
   - component: {fileID: 540815890}
   - component: {fileID: 540815891}
+  - component: {fileID: 540815893}
+  - component: {fileID: 540815892}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -780,6 +800,8 @@ MonoBehaviour:
   bgRed: {fileID: 1058447820}
   bgGreen: {fileID: 87681567}
   bgBlack: {fileID: 1859454323}
+  bounceSound: {fileID: 540815893}
+  volleySound: {fileID: 540815892}
 --- !u!135 &540815886
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -996,6 +1018,198 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!82 &540815892
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540815883}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 50b7bf50989e02b42b6aadb66d99b058, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &540815893
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540815883}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 765c73b4c4df2e348861d24c2bc3c330, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &612173837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,8 +1486,6 @@ MonoBehaviour:
   topSphere: {fileID: 1022060949}
   botSphere: {fileID: 217127989}
   paddle: {fileID: 612173843}
-  topWall: {fileID: 1645285666}
-  botWall: {fileID: 1393623860}
   boxCollider: {fileID: 612173840}
   size: 0
 --- !u!1 &860519612
@@ -1517,13 +1729,14 @@ MonoBehaviour:
   rightPaddle: {fileID: 2075425366}
   topWall: {fileID: 1645285666}
   botWall: {fileID: 1393623860}
-  middlePaddle: {fileID: 396303412}
+  middlePaddle: {fileID: 416110680}
   ball: {fileID: 540815884}
   minPaddleSize: 0.5
   maxPaddleSize: 4
   leftBC: {fileID: 612173840}
   rightBC: {fileID: 1870697934}
   illumination: {fileID: 705507993}
+  entireMiddlePaddle: {fileID: 396303409}
 --- !u!1 &937062035
 GameObject:
   m_ObjectHideFlags: 0
@@ -2777,8 +2990,6 @@ MonoBehaviour:
   topSphere: {fileID: 1899776787}
   botSphere: {fileID: 894448308}
   paddle: {fileID: 1870697935}
-  topWall: {fileID: 1645285666}
-  botWall: {fileID: 1393623860}
   boxCollider: {fileID: 1870697934}
   size: 0
 --- !u!23 &2075425368

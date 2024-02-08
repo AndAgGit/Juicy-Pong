@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PaddleSize : MonoBehaviour
 {
-    public Transform topSphere, botSphere, paddle, topWall, botWall;
+    public Transform topSphere, botSphere, paddle;
     public BoxCollider boxCollider;
     public float size;
     // Start is called before the first frame update
@@ -16,8 +16,8 @@ public class PaddleSize : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        topSphere.position = transform.position + (Vector3.forward * size);
-        botSphere.position = transform.position + (Vector3.back * size);
+        topSphere.localPosition = transform.localPosition + (Vector3.forward * size);
+        botSphere.localPosition = transform.localPosition + (Vector3.back * size);
     }
 
     public void Resize(float newSize)

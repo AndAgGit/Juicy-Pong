@@ -8,7 +8,7 @@ public class EventManager : MonoBehaviour
     public Rigidbody ball;
     public float minPaddleSize, maxPaddleSize;
     public BoxCollider leftBC, rightBC;
-    public GameObject illumination;
+    public GameObject illumination, entireMiddlePaddle;
 
     private bool eventEnabled, wallsShrunk, middleActive, isLight;
     private Vector3 ballVelocity;
@@ -46,14 +46,14 @@ public class EventManager : MonoBehaviour
         //Invoke("BallFreeze", 0.1f);
 
         int num = (int) Random.Range(0f, 5f);
+        float size;
         switch (num)
         {
             case 0: //paddle size
-                float size;
                 do
                 {
                     size = Random.Range(minPaddleSize, maxPaddleSize);
-                } while (Mathf.Abs(size - leftPaddle.GetComponent<PaddleSize>().size) <= 1f);
+                } while (Mathf.Abs(size - leftPaddle.GetComponent<PaddleSize>().size) <= 0.5f);
                 
                 leftPaddle.GetComponent<PaddleSize>().Resize(size);
                 rightPaddle.GetComponent<PaddleSize>().Resize(size);
@@ -114,8 +114,17 @@ public class EventManager : MonoBehaviour
                 ballTransform.parent = null;
                 break;
             case 2: //middle paddle
-                middleActive = !middleActive;
-                middlePaddle.gameObject.SetActive(middleActive);
+                if (entireMiddlePaddle.activeSelf)
+                {
+                    do
+                    {
+                        size = Random.Range(minPaddleSize, maxPaddleSize);
+                    } while (Mathf.Abs(size - middlePaddle.GetComponent<PaddleSize>().size) <= 0.5f);
+
+                    middlePaddle.GetComponent<PaddleSize>().Resize(size);
+                }
+
+                entireMiddlePaddle.SetActive(true);
                 break;
             case 3: //night mode
                 isLight = !isLight;
@@ -125,8 +134,18 @@ public class EventManager : MonoBehaviour
                 CameraTracking.isTracking = !CameraTracking.isTracking;
                 break;
             default:
-                middleActive = !middleActive;
-                middlePaddle.gameObject.SetActive(middleActive);
+                if (entireMiddlePaddle.activeSelf)
+                {
+                    do
+                    {
+                        size = Random.Range(minPaddleSize, maxPaddleSize);
+                    } while (Mathf.Abs(size - middlePaddle.GetComponent<PaddleSize>().size) <= 0.5f);
+
+                    middlePaddle.GetComponent<PaddleSize>().Resize(size);
+                }
+
+                entireMiddlePaddle.SetActive(true);
+                break;
                 break;
 
         }
