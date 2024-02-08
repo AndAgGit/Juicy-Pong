@@ -44,5 +44,18 @@ public class Scoring : MonoBehaviour
             transform.position = new Vector3(0f, 0f, 0f);
         }
         
+        if(rightScore == 11)
+        {
+            Debug.Log("Right Wins!");
+            rightScore = 0;
+            leftScore = 0;
+        }
+
+        if (leftScore == 11)
+        {
+            Debug.Log("Left Wins!");
+            rightScore = 0;
+            leftScore = 0;
+        }
     }
 }

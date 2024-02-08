@@ -10,14 +10,13 @@ public class EventManager : MonoBehaviour
     public BoxCollider leftBC, rightBC;
     public GameObject illumination, entireMiddlePaddle;
 
-    private bool eventEnabled, wallsShrunk, middleActive, isLight;
+    private bool eventEnabled, wallsShrunk, isLight;
     private Vector3 ballVelocity;
     // Start is called before the first frame update
     void Start()
     {
         eventEnabled = true;
         wallsShrunk = false;
-        middleActive = false;
         isLight = true;
     }
 
