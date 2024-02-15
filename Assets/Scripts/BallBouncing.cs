@@ -8,12 +8,13 @@ public class BallBouncing : MonoBehaviour
     public int maxVolleys;
     public static int volleys, bounces;
     public Transform cam, bgBlue, bgRed, bgGreen, bgBlack;
-    public AudioSource bounceSound, volleySound;
+    public AudioSource bounceSound, volleySound, twinkleSound;
+    public ParticleSystem particles;
     // Start is called before the first frame update
     void Start()
     {
         startSpeed = 5f;
-        deltaSpeed = 1f;
+        deltaSpeed = 2f;
         volleys = 0;
 
         Rigidbody rb = GetComponent<Rigidbody>();
@@ -28,8 +29,10 @@ public class BallBouncing : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        particles.Play();
         volleySound.pitch = 1f + ((volleys - 1) * 0.05f);
         bounceSound.pitch = 1f + ((volleys - 1) * 0.05f);
+        twinkleSound.pitch = 0.75f + ((volleys - 1) * 0.05f);
 
         Vector3 collisionNormal = collision.GetContact(0).normal;
         //Debug.Log(collisionNormal);
@@ -41,22 +44,22 @@ public class BallBouncing : MonoBehaviour
 
         if (bgBlue.position.z >= 60)
         {
-            bgBlue.position = new Vector3(0f, 0f, -20f);
+            bgBlue.position = new Vector3(0f, -10f, -20f);
         }
 
         if (bgRed.position.z >= 60)
         {
-            bgRed.position = new Vector3(0f, 0f, -20f);
+            bgRed.position = new Vector3(0f, -10f, -20f);
         }
 
         if (bgGreen.position.z >= 60)
         {
-            bgGreen.position = new Vector3(0f, 0f, -20f);
+            bgGreen.position = new Vector3(0f, -10f, -20f);
         }
 
         if (bgBlack.position.z >= 60)
         {
-            bgBlack.position = new Vector3(0f, 0f, -20f);
+            bgBlack.position = new Vector3(0f, -10f, -20f);
         }
 
         bounces++;

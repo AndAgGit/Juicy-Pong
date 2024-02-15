@@ -8,6 +8,7 @@ public class Scoring : MonoBehaviour
     public int leftScore, rightScore;
     public GameObject middlePaddle;
     public TextMeshProUGUI leftDisplay, rightDisplay;
+    public AudioSource scoreSound;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,8 @@ public class Scoring : MonoBehaviour
 
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.velocity = new Vector3(0f, 0f, 0f);
+
+            scoreSound.Play();
 
             if (other.gameObject.CompareTag("Left Score"))
             {

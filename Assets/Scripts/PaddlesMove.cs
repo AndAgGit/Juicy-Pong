@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class PaddlesMove : MonoBehaviour
 {
-    public float speed;
+    public static float speed;
     public Transform lPad, rPad;
     public Rigidbody lRB, rRB;
+    private float lAxis, rAxis;
     // Start is called before the first frame update
     void Start()
     {
-
+        speed = 200f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float lAxis = Input.GetAxis("Horizontal");
-        float rAxis = Input.GetAxis("Vertical");
+        lAxis = Input.GetAxis("Horizontal");
+        rAxis = Input.GetAxis("Vertical");
 
         lRB.AddForce(lAxis * Vector3.forward * speed * Time.deltaTime, ForceMode.Impulse);
         rRB.AddForce(rAxis * Vector3.forward * speed * Time.deltaTime, ForceMode.Impulse);
-
     }
 }
 ;
